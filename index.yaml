@@ -1,0 +1,11 @@
+name: gitops-cp-ace-dashboard
+type: gitops
+description: >-
+  Module to populate a gitops repo with the resources to provision the ACE
+  Dashboard
+tags:
+  - ace
+  - dashboard
+  - gitops
+versions: []
+id: github.com/cloud-native-toolkit/terraform-gitops-cp-ace-dashboard
