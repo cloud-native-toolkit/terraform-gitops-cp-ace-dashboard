@@ -1,0 +1,15 @@
+apiVersion: appconnect.ibm.com/v1beta1
+kind: Dashboard
+metadata:
+  name: {{ .Values.ibm_ace_dashboard.name }}
+spec:
+  license:
+     {{- toYaml .Values.ibm_ace_dashboard.license | nindent 4 }}
+  pod:
+    containers:
+      {{- toYaml .Values.ibm_ace_dashboard.pod.containers | nindent 6 }}
+  storage:
+    {{- toYaml .Values.ibm_ace_dashboard.storage | nindent 4 }}
+  useCommonServices: {{ .Values.ibm_ace_dashboard.useCommonServices }}
+  version: {{ .Values.ibm_ace_dashboard.version | quote }}
+

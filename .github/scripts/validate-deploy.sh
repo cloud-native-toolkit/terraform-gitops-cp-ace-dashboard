@@ -47,24 +47,29 @@ if [[ $count -eq 20 ]]; then
   exit 1
 else
   echo "Found namespace: ${NAMESPACE}. Sleeping for 30 seconds to wait for everything to settle down"
-  sleep 30
+  sleep 1
 fi
 
 DEPLOYMENT="${COMPONENT_NAME}-${BRANCH}"
+ACE_DASHBOARD_CRD="dashboard"
+TIMEOUT=20
 count=0
-until kubectl get deployment "${DEPLOYMENT}" -n "${NAMESPACE}" || [[ $count -eq 20 ]]; do
-  echo "Waiting for deployment/${DEPLOYMENT} in ${NAMESPACE}"
+DESIRED_STATE="Ready"
+
+until [[ $(kubectl get ${ACE_DASHBOARD_CRD}  -n  ${NAMESPACE} -o jsonpath="{range .items[*]}{.status.phase}{end}") == ${DESIRED_STATE} ||  $count -eq ${TIMEOUT} ]]; do
+  echo "Waiting for ibm-ace-${ACE_DASHBOARD_CRD} to come up in ${NAMESPACE}"
   count=$((count + 1))
-  sleep 15
+  sleep 30
 done
 
 if [[ $count -eq 20 ]]; then
-  echo "Timed out waiting for deployment/${DEPLOYMENT} in ${NAMESPACE}"
+  echo "Timed out waiting for ${ACE_DASHBOARD_CRD} in ${NAMESPACE}"
   kubectl get all -n "${NAMESPACE}"
   exit 1
+else
+  echo "Found an instances of ACE_DASHBOARD_CRD in a Running state in ${NAMESPACE}"
 fi
-
-kubectl rollout status "deployment/${DEPLOYMENT}" -n "${NAMESPACE}" || exit 1
+#kubectl rollout status "deployment/${DEPLOYMENT}" -n "${NAMESPACE}" || exit 1
 
 cd ..
 rm -rf .testrepo

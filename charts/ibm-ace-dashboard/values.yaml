@@ -1,0 +1,30 @@
+ibm_ace_dashboard:
+  name: ace-dashboard
+  license:
+    accept: true
+    license: L-KSBM-C87FU2
+    use: CloudPakForIntegrationProduction
+  pod:
+    containers:
+      content-server:
+        resources:
+          limits:
+            cpu: 1
+            memory: 512Mi
+          requests:
+            cpu: 50m
+            memory: 50Mi
+      control-ui:
+        resources:
+          limits:
+            cpu: 1
+            memory: 512Mi
+          requests:
+            cpu: 50m
+            memory: 125Mi
+  storage:
+    size: 5Gi
+    type: persistent-claim
+    class: ibmc-file-gold-gid
+  useCommonServices: true
+  version: '12.0'            
