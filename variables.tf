@@ -129,7 +129,7 @@ variable "ace_dash_instance_name" {
 #If ACE Dashboad Instance needed to be overridden then use this
 variable "storage_class_name" {
   type = string
-  description = "RWX Accessmode supported Storageclass"
+  description = "RWX Accessmode supported Storageclass is required "
   default = "portworx-db2-rwo-sc"
   
 }
