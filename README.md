@@ -1,16 +1,6 @@
 # Starter kit for a Terraform GitOps module
 
-This is a Starter kit to help with the creation of Terraform modules. The basic structure of a Terraform module is fairly
-simple and consists of the following basic values:
-
-- README.md - provides a description of the module
-- main.tf - defines the logic for the module
-- variables.tf (optional) - defines the input variables for the module
-- outputs.tf (optional) - defines the values that are output from the module
-
-Beyond those files, any other content can be added and organized however you see fit. For example, you can add a `scripts/` directory
-that contains shell scripts executed by a `local-exec` `null_resource` in the terraform module. The contents will depend on what your
-module does and how it does it.
+This terraform module provision the ACE Dashboard instance.
 
 ## Instructions for creating a new module
 
@@ -39,6 +29,8 @@ This module makes use of the output from other modules:
 
 - GitOps - github.com/cloud-native-toolkit/terraform-tools-gitops.git
 - Namespace - github.com/cloud-native-toolkit/terraform-gitops-namespace.git
+- CP4i Dependency - github.com/cloud-native-toolkit/terraform-cp4i-dependency-management.git
+- ACE Operator - github.com/cloud-native-toolkit/terraform-gitops-cp-app-connect.git
 - etc
 
 ## Example usage
