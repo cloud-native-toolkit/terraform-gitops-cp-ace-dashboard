@@ -61,7 +61,7 @@ versions:
         moduleRef:
           id: catalogs
           output: entitlement_key
-      - name: instance_version
+      - name: ace_version
         moduleRef:
           id: dep-manager
           output: ace.version
