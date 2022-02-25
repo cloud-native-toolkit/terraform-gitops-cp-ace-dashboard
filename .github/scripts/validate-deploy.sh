@@ -51,7 +51,7 @@ else
 fi
 
 DEPLOYMENT="${COMPONENT_NAME}-${BRANCH}"
-ACE_DASHBOARD_CRD="dashboard"
+ACE_DASHBOARD_CRD="dashboard.appconnect.ibm.com"
 TIMEOUT=20
 count=0
 DESIRED_STATE="Ready"
