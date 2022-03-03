@@ -18,14 +18,12 @@ jobs:
           GITHUB_REPOSITORY: ${{ env.GITHUB_REPOSITORY }}
         shell: bash
         run: |
-          repo=$(echo ${GITHUB_REPOSITORY} | sed -E "s~.*/[^-]+-(.*)~\1-${{matrix.testcase}}~g")
+          repo=$(echo ${GITHUB_REPOSITORY} | sed -E "s~.*/[^-]+-(.*)~\1-${{matrix.testcase}}~g" | sed 's/_latest_gitops//g')
           echo "Repo: $repo"
           echo "::set-output name=repo::$repo"
-
           org="${GIT_ORG:-cloud-native-toolkit-test}"
           echo "Org: $org"
           echo "::set-output name=org::$org"
-
       - name: Delete test repo
         env:
           GITHUB_REPOSITORY: ${{ env.GITHUB_REPOSITORY }}
@@ -40,5 +38,4 @@ jobs:
             echo "You cannot delete the current repository!!!!"
             exit 1
           fi
-
           gh repo delete ${GIT_SLUG} --confirm
