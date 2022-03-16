@@ -1,7 +1,7 @@
 locals {
 
   # If decided to create the ACE Dashboard instance in the dedicated namepace 
-  namespace = var.is_ace_dash_required_dedicated_ns ? var.ace_dash_instance_namespace : var.namespace
+  namespace =  var.namespace
   
   name          = "gitops-cp-ace-dashboard"
   bin_dir       = module.setup_clis.bin_dir
@@ -9,8 +9,7 @@ locals {
   
   base_name          = "ibm-ace"
   
-  # If the name of an ACE Dashboard is overridden then choose the overridden value
-  instance_name = var.ace_dash_instance_name != "" ? var.ace_dash_instance_name : "${local.base_name}-dashboard"
+
 
   chart_name="ibm-ace-dashboard" 
   instance_chart_dir = "${path.module}/charts/${local.chart_name}"
