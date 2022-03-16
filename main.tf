@@ -9,7 +9,8 @@ locals {
   
   base_name          = "ibm-ace"
   
-  
+  # If the name of an ACE Dashboard is overridden then choose the overridden value
+  instance_name =  "${local.base_name}-dashboard"
 
   chart_name="ibm-ace-dashboard" 
   instance_chart_dir = "${path.module}/charts/${local.chart_name}"
