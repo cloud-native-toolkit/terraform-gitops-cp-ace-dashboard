@@ -79,3 +79,46 @@ variable "server_name" {
   description = "The name of the server"
   default     = "default"
 }
+
+variable "entitlement_key" {
+  type        = string
+  description = "The entitlement key required to access Cloud Pak images"
+  sensitive   = true
+}
+
+#Module Specific extension
+
+
+variable "ace_version" {
+  type        = string
+  description = "The version of the ACE Dashboard should be installed"
+  default     = ""
+}
+
+variable "license" {
+  type        = string
+  description = "The license string that should be used for the instance"
+  default     = ""
+}
+
+variable "license_use" {
+  type        = string
+  description = "The possible values are CloudPakForIntegrationNonProduction or CloudPakForIntegrationProductionn"
+  default     = ""
+}
+
+
+#If ACE Dashboad Instance needed to be overridden then use this
+variable "ace_dash_instance_name" {
+  type = string
+  description = "If ACE Dashboard instance name needed to be overridden"
+  default = ""
+  
+}
+#If ACE Dashboad Instance needed to be overridden then use this
+variable "storage_class_name" {
+  type = string
+  description = "RWX Accessmode supported Storageclass is required "
+  default = "portworx-db2-rwo-sc"
+  
+}

@@ -32,6 +32,7 @@ variable "cluster_name" {
 variable "cluster_type" {
   type        = string
   description = "The type of cluster that should be created (openshift or kubernetes)"
+  default     = "ocp4"
 }
 
 variable "cluster_exists" {
@@ -75,3 +76,6 @@ variable "kubeseal_namespace" {
 
 variable "cp_entitlement_key" {
 }
+
+
+

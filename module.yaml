@@ -3,6 +3,7 @@ type: gitops
 description: Module to populate a gitops repo with the resources to provision the ACE Dashboard
 tags:
   - ace
+  - cp4i
   - dashboard
   - gitops
 versions:
@@ -14,11 +15,26 @@ versions:
       - id: gitops
         refs:
           - source: github.com/cloud-native-toolkit/terraform-tools-gitops.git
-            version: ">= 1.1.0"
+            version: '>= 1.1.0'
       - id: namespace
         refs:
           - source: github.com/cloud-native-toolkit/terraform-gitops-namespace.git
-            version: ">= 1.0.0"
+            version: '>= 1.0.0'
+      #Addition: Start      
+      - id: catalogs
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-gitops-cp-catalogs.git
+            version: ">= 1.0.0"      
+      - id: dep-manager
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-cp4i-dependency-management.git
+            version: '>= 1.0.0'
+      - id: ace-operator
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-gitops-cp-app-connect.git
+            version: '>= 1.0.0'
+
+      #Addition: End      
     variables:
       - name: gitops_config
         moduleRef:
@@ -40,3 +56,23 @@ versions:
         moduleRef:
           id: gitops
           output: sealed_secrets_cert
+      #Addition: Start      
+      - name: entitlement_key
+        moduleRef:
+          id: catalogs
+          output: entitlement_key
+      - name: ace_version
+        moduleRef:
+          id: dep-manager
+          output: ace.version
+      - name: license
+        moduleRef:
+          id: dep-manager
+          output: ace.license
+      - name: license_use
+        moduleRef:
+          id: dep-manager
+          output: ace.license_use
+
+      #Addition: End          
+softwareProvider: ibm-cp
