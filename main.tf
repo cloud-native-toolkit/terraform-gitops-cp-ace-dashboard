@@ -6,7 +6,7 @@ locals {
   name          = "gitops-cp-ace-dashboard"
   bin_dir       = module.setup_clis.bin_dir
   
-  
+   
   base_name          = "ibm-ace"
   
   # If the name of an ACE Dashboard is overridden then choose the overridden value
