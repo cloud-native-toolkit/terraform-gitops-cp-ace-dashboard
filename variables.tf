@@ -86,19 +86,6 @@ variable "entitlement_key" {
   sensitive   = true
 }
 
-#Module Specific extension
-variable "is_ace_dash_required_dedicated_ns" {
-  type = bool
-  description = "If ACE Dashboard instance need to be deployed in dedicated namespace"
-  default = false
-
-  
-}
-variable "ace_dash_instance_namespace" {
-  type = string
-  description = "It is beeter to manage ACE Dashboard instance workload in a dedicated namespace"
-  default = "gitops-cp-ace-dashboard"
-}
 
 variable "ace_version" {
   type        = string

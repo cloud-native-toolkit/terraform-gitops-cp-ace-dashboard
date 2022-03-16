@@ -18,9 +18,7 @@ module "gitops_module" {
 
  # Mandatory requirement
  storage_class_name="portworx-db2-rwo-sc"
-  # Optional: Extension
-  #is_ace_dash_required_dedicated_ns = false
-  #ace_dash_instance_namespace="cp4i-ace-dashboard"
+
   
 
 

@@ -1,7 +1,7 @@
 locals {
 
-  # If decided to create the ACE Dashboard instance in the dedicated namepace 
-  namespace = var.is_ace_dash_required_dedicated_ns ? var.ace_dash_instance_namespace : var.namespace
+  
+  namespace = var.namespace
   
   name          = "gitops-cp-ace-dashboard"
   bin_dir       = module.setup_clis.bin_dir
