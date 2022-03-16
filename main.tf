@@ -9,7 +9,7 @@ locals {
   
   base_name          = "ibm-ace"
   
-
+  
 
   chart_name="ibm-ace-dashboard" 
   instance_chart_dir = "${path.module}/charts/${local.chart_name}"
