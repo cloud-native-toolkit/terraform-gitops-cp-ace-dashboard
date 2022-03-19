@@ -34,3 +34,12 @@ output "type" {
   value       = local.type
   depends_on  = [null_resource.setup_gitops]
 }
+
+
+# #Extension. During BillOfMaterial execution, There would be a singlenamespace where all the components will be created under that.
+# # To isolate ACE Dashboard instance from the OOB Namespace, we are creating a new namespace
+# output "ace_dash_instance_namespace" {
+#   description = "The namespace where the ace-dashboard instance  deployed"
+#   value       = local.namespace
+#   depends_on  = [module.ace_dash_instance_ns.name]
+# }
