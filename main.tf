@@ -73,7 +73,6 @@ locals {
   layer_config = var.gitops_config[local.layer]
 }
 
-
 resource gitops_pull_secret cp_icr_io {
   name = "ibm-entitlement-key"
   namespace = local.namespace
@@ -89,7 +88,6 @@ resource gitops_pull_secret cp_icr_io {
   registry_username = "cp"
   registry_password = var.entitlement_key
 }
-
 
 resource null_resource create_yaml {
   provisioner "local-exec" {
