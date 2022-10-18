@@ -5,7 +5,6 @@ module "cp_ace_operator" {
   git_credentials = module.gitops.git_credentials
   server_name = module.gitops.server_name
   
-  catalog = module.cp_catalogs.catalog_ibmoperators
   channel = module.cp4i-dependencies.ace.channel
   
   
