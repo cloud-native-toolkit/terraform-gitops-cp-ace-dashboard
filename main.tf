@@ -31,7 +31,7 @@ locals {
             content-server={
               resources={
                 limits={
-                  cpu="250m"
+                  cpu="1"
                   memory="512Mi"
                 }
                 requests={
@@ -44,12 +44,12 @@ locals {
             control-ui={
               resources={
                 limits={
-                  cpu="500m"
+                  cpu="1"
                   memory="512Mi"
                 }
                 requests={
                   cpu="50m"
-                  memory="125Mi"
+                  memory="50mi"
                 }
               }
             }            
