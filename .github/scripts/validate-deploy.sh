@@ -71,7 +71,5 @@ else
 fi
 #kubectl rollout status "deployment/${DEPLOYMENT}" -n "${NAMESPACE}" || exit 1
 
-sleep 30m
-
 cd ..
 rm -rf .testrepo
