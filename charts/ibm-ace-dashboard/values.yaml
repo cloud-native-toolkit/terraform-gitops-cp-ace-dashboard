@@ -9,7 +9,7 @@ ibm_ace_dashboard:
       content-server:
         resources:
           limits:
-            cpu: 1
+            cpu: 250m
             memory: 512Mi
           requests:
             cpu: 50m
@@ -17,7 +17,7 @@ ibm_ace_dashboard:
       control-ui:
         resources:
           limits:
-            cpu: 1
+            cpu: 500m
             memory: 512Mi
           requests:
             cpu: 50m
