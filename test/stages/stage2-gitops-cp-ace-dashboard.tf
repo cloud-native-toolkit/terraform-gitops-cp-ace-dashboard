@@ -17,7 +17,7 @@ module "gitops_module" {
  license_use = module.cp4i-dependencies.ace.license_use
 
  # Mandatory requirement
- storage_class_name="portworx-db2-rwo-sc"
+ storage_class_name="ocs-storagecluster-cephfs"
 
 
 

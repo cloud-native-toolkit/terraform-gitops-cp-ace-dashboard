@@ -31,7 +31,7 @@ locals {
             content-server={
               resources={
                 limits={
-                  cpu="1"
+                  cpu="250m"
                   memory="512Mi"
                 }
                 requests={
@@ -44,12 +44,12 @@ locals {
             control-ui={
               resources={
                 limits={
-                  cpu="1"
+                  cpu="500m"
                   memory="512Mi"
                 }
                 requests={
                   cpu="50m"
-                  memory="50Mi"
+                  memory="125Mi"
                 }
               }
             }            
@@ -73,36 +73,21 @@ locals {
   layer_config = var.gitops_config[local.layer]
 }
 
-
-# #ACE Dashboard instance namespace creation
-# module "ace_dash_instance_ns" {
-#     source = "github.com/cloud-native-toolkit/terraform-gitops-namespace.git"
-
-#   gitops_config = var.gitops_config
-#   git_credentials = var.git_credentials
-#   name = local.namespace
-  
-# }
-
-
-
-module pull_secret {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-pull-secret"
-
-  #depends_on = [module.ace_dash_instance_ns]
-
-  gitops_config = var.gitops_config
-  git_credentials = var.git_credentials
+resource gitops_pull_secret cp_icr_io {
+  name = "ibm-entitlement-key"
+  namespace = local.namespace
   server_name = var.server_name
+  branch = local.application_branch
+  layer = local.layer
+  credentials = yamlencode(var.git_credentials)
+  config = yamlencode(var.gitops_config)
   kubeseal_cert = var.kubeseal_cert
-  #namespace = var.namespace
-  namespace=local.namespace
-  docker_username = "cp"
-  docker_password = var.entitlement_key
-  docker_server   = "cp.icr.io"
-  secret_name     = "ibm-entitlement-key"
-}
 
+  secret_name     = "ibm-entitlement-key"
+  registry_server = "cp.icr.io"
+  registry_username = "cp"
+  registry_password = var.entitlement_key
+}
 
 resource null_resource create_yaml {
   provisioner "local-exec" {
