@@ -119,6 +119,6 @@ variable "ace_dash_instance_name" {
 variable "storage_class_name" {
   type = string
   description = "RWX Accessmode supported Storageclass is required "
-  default = "portworx-db2-rwo-sc"
+  default = "ocs-storagecluster-cephfs"
   
 }
