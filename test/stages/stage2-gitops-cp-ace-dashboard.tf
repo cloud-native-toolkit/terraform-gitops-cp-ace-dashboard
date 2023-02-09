@@ -17,9 +17,5 @@ module "gitops_module" {
  license_use = module.cp4i-dependencies.ace.license_use
 
  # Mandatory requirement
- storage_class_name="ocs-storagecluster-cephfs"
-
-
-
-  
+ storage_class_name = module.storage.rwx_storage_class
 }
