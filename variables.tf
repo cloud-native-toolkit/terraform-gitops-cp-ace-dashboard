@@ -119,6 +119,4 @@ variable "ace_dash_instance_name" {
 variable "storage_class_name" {
   type = string
   description = "RWX Accessmode supported Storageclass is required "
-  default = "ocs-storagecluster-cephfs"
-  
 }
